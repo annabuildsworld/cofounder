@@ -1,2 +1,5 @@
 # Holds the private Formspree endpoint, never commit it
 config.js
+
+# Vercel build output
+public/

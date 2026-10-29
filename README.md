@@ -2,15 +2,11 @@
 
 A single-page black application form (`index.html`) that sends answers to Formspree and then shows applicants what happens next.
 
-## Hosting (GitHub Pages)
+## Hosting (Vercel)
 
-The Formspree endpoint is kept out of the repo. On every push to `main`, `.github/workflows/deploy.yml` writes `config.js` from a repository secret and deploys the site.
+The Formspree endpoint is kept out of the repo. On every deploy, `build.sh` writes `config.js` from an environment variable (configured in `vercel.json`).
 
-One-time setup:
-
-1. **Settings → Secrets and variables → Actions → New repository secret**: name `FORMSPREE_ENDPOINT`, value your Formspree URL.
-2. **Settings → Pages → Build and deployment → Source**: choose **GitHub Actions**.
-3. **Actions → Deploy to GitHub Pages → Run workflow** (or push to `main`).
+One-time setup: in the Vercel project, go to **Settings → Environment Variables** and add `FORMSPREE_ENDPOINT` with your Formspree URL (for Production, Preview and Development), then redeploy.
 
 ## Running locally
 
