@@ -130,10 +130,18 @@
           </div>
         </div>
 
-        <div>
-          <label for="age">Age</label>
-          <input id="age" name="age" type="number" min="16" max="99" inputmode="numeric" required>
+        <div class="row">
+          <div>
+            <label for="age">Age</label>
+            <input id="age" name="age" type="number" min="16" max="99" inputmode="numeric" required>
+          </div>
+          <div>
+            <label for="country">Country you live in</label>
+            <input id="country" name="country" autocomplete="country-name" placeholder="e.g. Germany" required>
+          </div>
         </div>
+        <!-- Filled from the applicant's browser so time zones are easy to plan around -->
+        <input type="hidden" name="time_zone" id="time_zone">
 
         <div>
           <label for="why">Why do you want to join as a cofounder?</label>
@@ -216,6 +224,10 @@
     const form = document.getElementById("form");
     const errorEl = document.getElementById("error");
     const submitBtn = document.getElementById("submit");
+
+    try {
+      document.getElementById("time_zone").value = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+    } catch {}
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
